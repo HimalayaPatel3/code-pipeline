@@ -1,0 +1,12 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      docker: 18
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR to fetch image from secondary account...
+  build:
+    commands:
+      - echo pushing the image into our ecr repository...
