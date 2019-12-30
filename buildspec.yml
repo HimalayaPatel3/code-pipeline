@@ -7,7 +7,7 @@ phases:
       - sudo pip install chalice
       - aws --version
       - sudo pip install -r requirements.txt
-      - chalice package /tmp/packaged --stage ${STAGE}
+      - chalice package /tmp/packaged
       - aws cloudformation package --template-file /tmp/packaged/sam.json --s3-bucket ${APP_S3_BUCKET} --s3-prefix ${CODEBUILD_BUILD_ID} --output-template-file transformed.yaml --kms-key-id=${KMS_ID}
 # Change ACL on items in this build
       - aws s3 cp --recursive s3://${APP_S3_BUCKET}/${CODEBUILD_BUILD_ID}/ s3://${APP_S3_BUCKET}/${CODEBUILD_BUILD_ID}/ --acl bucket-owner-full-control
